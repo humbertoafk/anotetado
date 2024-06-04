@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title #{title}
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap' rel='stylesheet')
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='/css/index.css')
+    link(rel='stylesheet', href='/css/forms.css')
+    link(rel='stylesheet', href='/css/main.css')
+
+  body
+    nav
+      ul
+        li
+          img(src='/images/a-note-tado.png')
+        if !user
+          li: a(href='/iniciar-sesion') Iniciar Sesión
+          li: a(href='/registrarse') Registrarse
+        else
+          li: a(href='/perfil') Perfil
+          li: a(href='/notes') Notas
+          li: a(href='/folders') Ver Carpetas
+          li: a(href='/logout') Cerrar Sesión
+
+    .container
+      block content
+      script(src='/scripts/main.js')

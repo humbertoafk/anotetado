@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1 Iniciar Sesión
+  if messages.error
+    p.error= messages.error
+  form(action="/iniciar-sesion" method="POST")
+    div
+      label(for="email") Correo Electrónico:
+      input(type="email" name="email" required)
+    div
+      label(for="password") Contraseña:
+      input(type="password" name="password" required)
+    button(type="submit") Iniciar Sesión

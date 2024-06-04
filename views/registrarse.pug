@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Registrarse
+  if messages.error
+    p.error= messages.error
+  if messages.success
+    p.success= messages.success
+  form(action="/registrarse" method="POST")
+    div
+      label(for="username") Nombre de Usuario:
+      input(type="text" name="username" required)
+    div
+      label(for="email") Correo Electrónico:
+      input(type="email" name="email" required)
+    div
+      label(for="password") Contraseña:
+      input(type="password" name="password" required)
+    button(type="submit") Registrarse

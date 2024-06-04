@@ -1,0 +1,35 @@
+{
+  "name": "anote-tado",
+  "version": "1.0.0",
+  "description": "ordinario",
+  "main": "server.js",
+  "scripts": {
+    "sass": "sass styles/sass/styles.sass:public/css/styles.css",
+    "sass-watch": "sass --watch styles/sass/:public/css/",
+    "ndm": "nodemon server.js",
+    "start": "npm-run-all --parallel sass-watch ndm"
+  },
+  "author": "Humberto",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
+    "mysql2": "^3.9.8",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.3",
+    "sass": "^1.77.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.1",
+    "npm-run-all": "^4.1.5"
+  }
+}

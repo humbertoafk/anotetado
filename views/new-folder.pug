@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .container
+    h1= title
+    if messages.error
+      p.error= messages.error
+    if messages.success
+      p.success= messages.success
+    form(action='/folders/new' method='POST')
+      div
+        label(for='name') Nombre de la Carpeta:
+        input(type='text' name='name' required)
+      button(type='submit') Crear Carpeta

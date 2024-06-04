@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .container
+    h1= title
+    if messages.error
+      p.error= messages.error
+    if messages.success
+      p.success= messages.success
+    a(href='/folders/new') Nueva Carpeta
+    a(href='/notes') Volver a Notas
+    ul
+      each folder in folders
+        li
+          a(href=`/folders/${folder.id}`)= folder.name

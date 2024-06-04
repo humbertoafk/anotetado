@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .container
+    h1= title
+    if messages.error
+      p.error= messages.error
+    if messages.success
+      p.success= messages.success
+    if user
+      if notifications.length
+        ul
+          each notification in notifications
+            li
+              p= notification.message
+              form(action='/notifications/mark-read' method='POST')
+                input(type='hidden' name='notification_id' value=notification.id)
+                button(type='submit') Marcar como leído
+      else
+        p No tienes nuevas notificaciones.
+    else
+      p Bienvenido a anote-tado. Por favor, inicia sesión para ver y gestionar tus notas.

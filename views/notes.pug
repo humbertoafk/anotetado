@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container
+    h1= title
+    if messages.error
+      p.error= messages.error
+    if messages.success
+      p.success= messages.success
+    form(action='/notes/search' method='GET')
+      input(type='text' name='query' placeholder='Buscar notas...')
+      button(type='submit') Buscar
+    a(href='/notes/new') Crear Nota
+    a(href='/folders/new') Crear Carpeta
+    a(href='/folders') Ver Carpetas
+    ul
+      each note in notes
+        li
+          h2= note.title
+          p= note.content
+          p Creado en: #{note.created_at_formatted}
+          a(href=`/notes/edit/${note.id}`) Editar
+          a(href=`/notes/delete/${note.id}`) Eliminar

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .container
+    h1= title
+    if messages.error
+      p.error= messages.error
+    if messages.success
+      p.success= messages.success
+    ul
+      each note in notes
+        li
+          h2= note.title
+          p= note.content
+          p Creado en: #{note.created_at_formatted}
+          p #{note.username} compartió esta nota
+          a(href=`/notes/edit/${note.id}`) Editar
+          a(href=`/notes/delete/${note.id}`) Eliminar
