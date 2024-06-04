@@ -8,6 +8,7 @@ block content
     if messages.success
       p.success= messages.success
     if user
+      p Bienvenido, #{user.username}!
       if notifications.length
         ul
           each notification in notifications

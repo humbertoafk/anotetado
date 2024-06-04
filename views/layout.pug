@@ -5,15 +5,14 @@ html
     link(rel='preconnect' href='https://fonts.googleapis.com')
     link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
     link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' rel='stylesheet')
-    link(rel='stylesheet', href='/css/styles.css')
-    link(rel='stylesheet', href='/css/index.css')
-    link(rel='stylesheet', href='/css/forms.css')
     link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/forms.css')
     link(rel='icon', href='/images/favicon.png')
+    script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
   body
     nav
       ul.nav-list
-        li.nav-item
+        li.nav-item.logo
           a(href='/')
             img(src='/images/a-note-tado.png')
         if !user
@@ -26,3 +25,4 @@ html
     .container
       block content
     script(src='/scripts/main.js')
+    script(src='/scripts/fetchData.js')

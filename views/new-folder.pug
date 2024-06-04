@@ -1,14 +1,14 @@
 extends layout
 
 block content
-  .container
+  .container.new-folder-container
     h1= title
     if messages.error
       p.error= messages.error
     if messages.success
       p.success= messages.success
     form(action='/folders/new' method='POST')
-      div
+      .form-group
         label(for='name') Nombre de la Carpeta:
-        input(type='text' name='name' required)
-      button(type='submit') Crear Carpeta
+        input.form-control(type='text' name='name' required)
+      button.btn.btn-primary(type='submit') Crear Carpeta

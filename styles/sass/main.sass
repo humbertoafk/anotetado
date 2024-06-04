@@ -1,6 +1,6 @@
 body
   font-family: 'Roboto', sans-serif
-  background-color: #f8f9fa
+  background-color: #fefae0
   color: #333
 
 nav
@@ -11,6 +11,7 @@ nav
     padding: 0
     display: flex
     align-items: center
+    flex-wrap: wrap
     li.nav-item
       margin: 0 10px
       a
@@ -21,25 +22,74 @@ nav
         &:hover
           background-color: #495057
           text-decoration: none
+    .logo
+      margin-right: auto
   img
     height: 40px
     margin-right: 20px
 
-.notes-container, .folder-notes-container
+  @media (max-width: 768px)
+    ul.nav-list
+      flex-direction: column
+      align-items: flex-start
+      li.nav-item
+        width: 100%
+        margin: 5px 0
+        a
+          display: block
+          width: 100%
+          text-align: center
+          padding: 10px
+
+.notes-container, .folder-notes-container, .folders-container, .new-folder-container
   max-width: 800px
   margin: 0 auto
   padding: 20px
+  background-color: #fff
+  border-radius: 8px
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+  
+  @media (max-width: 768px)
+    padding: 15px
+    max-width: 100%
+
+.folders-container
+  h1
+    text-align: center
+    margin-bottom: 20px
+  ul.folders-list
+    list-style: none
+    padding: 0
+    li.folder-item
+      margin: 10px 0
+      a
+        display: block
+        padding: 10px
+        background-color: #fff
+        border-radius: 5px
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+        text-decoration: none
+        color: #000
+        &:hover
+          background-color: #f0f0f0
 
 .note-card
-  background-color: #fff
+  background-color: #fafad2
   padding: 20px
   margin-bottom: 15px
+  margin-top: 25px
   border-radius: 5px
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+  border: .8px
+  border-style: solid 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)
   h2
     margin-top: 0
+    margin-bottom: 0
+    font-weight: bold
+    font-size: 2rem
   p
     margin: 5px 0
+    font-size: 18px
   .btn
     display: inline-block
     margin-top: 10px
@@ -50,35 +100,19 @@ nav
     text-decoration: none
     cursor: pointer
     margin: 1px 8px
-    &.btn-primary
+    &.btn-editar
       background-color: #007bff
       &:hover
         background-color: #0056b3
-    &.btn-danger
+    &.btn-eliminar
       background-color: #dc3545
       &:hover
         background-color: #c82333
-
-.folders-container
-  max-width: 800px
-  margin: 0 auto
-  padding: 20px
-
-.folders-list
-  list-style: none
-  padding: 0
-  li.folder-item
-    margin: 10px 0
-    a
-      display: block
-      padding: 10px
-      background-color: #fff
-      border-radius: 5px
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
-      text-decoration: none
-      color: #007bff
-      &:hover
-        background-color: #f0f0f0
+  .icon-btn
+    width: 24px
+    height: 24px
+    margin: 0 5px
+    cursor: pointer
 
 .edit-note-container, .new-note-container, .new-folder-container, .login-container, .register-container
   max-width: 600px
@@ -87,6 +121,10 @@ nav
   background-color: #fff
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
   border-radius: 5px
+
+  @media (max-width: 768px)
+    padding: 15px
+    max-width: 100%
 
 .form-group
   margin-bottom: 15px
@@ -100,17 +138,22 @@ nav
 
 .btn
   padding: 10px 20px
-  background-color: #007bff
-  border: none
-  color: #fff
+  background-color: #ffe618
+  color: #000
   border-radius: 4px
+  border: .8px
+  border-style: solid 
   cursor: pointer
   text-decoration: none
-  &:hover
-    background-color: #0056b3
+  &.btn-primary
+    background-color: #ffe618
+    color: #000
 
 .container
   padding: 20px
+
+  @media (max-width: 768px)
+    padding: 15px
 
 .alert
   padding: 15px

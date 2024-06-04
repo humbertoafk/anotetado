@@ -1,22 +1,24 @@
 extends layout
 
 block content
-  .container
-    h1= title
+  .form-container
+    h1 Nueva Nota
     if messages.error
-      p.error= messages.error
+      .alert.alert-danger
+        p= messages.error
     if messages.success
-      p.success= messages.success
-    form(action='/notes/new' method='POST')
-      div
-        label(for='title') Título:
-        input(type='text' name='title' required)
-      div
-        label(for='content') Contenido:
-        textarea(name='content' required)
-      div
-        label(for='folder_id') Carpeta:
-        select(name='folder_id')
+      .alert.alert-success
+        p= messages.success
+    form(method='POST', action='/notes/new')
+      .form-group
+        label(for='title') Título
+        input#title.form-control(type='text', name='title', required)
+      .form-group
+        label(for='content') Contenido
+        textarea#content.form-control(name='content', rows='5', required)
+      .form-group
+        label(for='folder') Carpeta
+        select#folder.form-control(name='folder_id')
           each folder in folders
-            option(value=folder.id)= folder.name
-      button(type='submit') Crear Nota
+            option(value=folder.id) #{folder.name}
+      button.btn.btn-primary(type='submit') Crear Nota

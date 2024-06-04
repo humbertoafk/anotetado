@@ -1,6 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f8f9fa;
+  background-color: #fefae0;
   color: #333;
 }
 
@@ -13,6 +13,7 @@ nav ul.nav-list {
   padding: 0;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 nav ul.nav-list li.nav-item {
   margin: 0 10px;
@@ -27,29 +28,88 @@ nav ul.nav-list li.nav-item a:hover {
   background-color: #495057;
   text-decoration: none;
 }
+nav ul.nav-list .logo {
+  margin-right: auto;
+}
 nav img {
   height: 40px;
   margin-right: 20px;
 }
+@media (max-width: 768px) {
+  nav ul.nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav ul.nav-list li.nav-item {
+    width: 100%;
+    margin: 5px 0;
+  }
+  nav ul.nav-list li.nav-item a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+}
 
-.notes-container, .folder-notes-container {
+.notes-container, .folder-notes-container, .folders-container, .new-folder-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px) {
+  .notes-container, .folder-notes-container, .folders-container, .new-folder-container {
+    padding: 15px;
+    max-width: 100%;
+  }
+}
+
+.folders-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.folders-container ul.folders-list {
+  list-style: none;
+  padding: 0;
+}
+.folders-container ul.folders-list li.folder-item {
+  margin: 10px 0;
+}
+.folders-container ul.folders-list li.folder-item a {
+  display: block;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #000;
+}
+.folders-container ul.folders-list li.folder-item a:hover {
+  background-color: #f0f0f0;
 }
 
 .note-card {
-  background-color: #fff;
+  background-color: #fafad2;
   padding: 20px;
   margin-bottom: 15px;
+  margin-top: 25px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 0.8px;
+  border-style: solid;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 .note-card h2 {
   margin-top: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 2rem;
 }
 .note-card p {
   margin: 5px 0;
+  font-size: 18px;
 }
 .note-card .btn {
   display: inline-block;
@@ -62,43 +122,23 @@ nav img {
   cursor: pointer;
   margin: 1px 8px;
 }
-.note-card .btn.btn-primary {
+.note-card .btn.btn-editar {
   background-color: #007bff;
 }
-.note-card .btn.btn-primary:hover {
+.note-card .btn.btn-editar:hover {
   background-color: #0056b3;
 }
-.note-card .btn.btn-danger {
+.note-card .btn.btn-eliminar {
   background-color: #dc3545;
 }
-.note-card .btn.btn-danger:hover {
+.note-card .btn.btn-eliminar:hover {
   background-color: #c82333;
 }
-
-.folders-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.folders-list {
-  list-style: none;
-  padding: 0;
-}
-.folders-list li.folder-item {
-  margin: 10px 0;
-}
-.folders-list li.folder-item a {
-  display: block;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: #007bff;
-}
-.folders-list li.folder-item a:hover {
-  background-color: #f0f0f0;
+.note-card .icon-btn {
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+  cursor: pointer;
 }
 
 .edit-note-container, .new-note-container, .new-folder-container, .login-container, .register-container {
@@ -108,6 +148,12 @@ nav img {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+@media (max-width: 768px) {
+  .edit-note-container, .new-note-container, .new-folder-container, .login-container, .register-container {
+    padding: 15px;
+    max-width: 100%;
+  }
 }
 
 .form-group {
@@ -124,19 +170,26 @@ nav img {
 
 .btn {
   padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: #fff;
+  background-color: #ffe618;
+  color: #000;
   border-radius: 4px;
+  border: 0.8px;
+  border-style: solid;
   cursor: pointer;
   text-decoration: none;
 }
-.btn:hover {
-  background-color: #0056b3;
+.btn.btn-primary {
+  background-color: #ffe618;
+  color: #000;
 }
 
 .container {
   padding: 20px;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
 }
 
 .alert {
