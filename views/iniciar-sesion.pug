@@ -1,14 +1,21 @@
 extends layout
 
 block content
-  h1 Iniciar Sesión
-  if messages.error
-    p.error= messages.error
-  form(action="/iniciar-sesion" method="POST")
-    div
-      label(for="email") Correo Electrónico:
-      input(type="email" name="email" required)
-    div
-      label(for="password") Contraseña:
-      input(type="password" name="password" required)
-    button(type="submit") Iniciar Sesión
+  .login-container
+    h1 Iniciar Sesión
+    if messages.error
+      .alert.alert-danger
+        each val in messages.error
+          p= val
+    if messages.success
+      .alert.alert-success
+        each val in messages.success
+          p= val
+    form(action='/iniciar-sesion' method='POST')
+      .form-group
+        label(for='email') Correo electrónico:
+        input(type='email' name='email' class='form-control' required)
+      .form-group
+        label(for='password') Contraseña:
+        input(type='password' name='password' class='form-control' required)
+      button(type='submit' class='btn btn-primary') Iniciar Sesión

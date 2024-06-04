@@ -11,12 +11,13 @@ const initializePassport = require('./config/passport-config');
 const router = express.Router();
 const notesRouter = require('./routes/notes');
 const foldersRouter = require('./routes/folders');
-const notificationsRouter = require('./routes/notifications'); // Añadir el router de notificaciones
+const notificationsRouter = require('./routes/notifications');
 dotenv.config();
 
-// Inicializar Passport
+// Inicializar Passport para la autenticación
 initializePassport(passport);
 
+// Configurar middlewares para manejar solicitudes, sesiones, y mensajes flash
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(flash());
@@ -28,21 +29,21 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Middleware para pasar la información del usuario a las vistas
+// Middleware para pasar la información del usuario autenticado y mensajes flash a las vistas
 app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.messages = req.flash();
   next();
 });
 
-// Configuración de la plantilla Pug
+// Configuración de la plantilla Pug para la renderización de vistas
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware para procesar archivos estáticos en la carpeta 'public'
+// Middleware para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static('public'));
 
-// Crear la carpeta compartida al iniciar el servidor
+// Crear la carpeta compartida "Notas compartidas" al iniciar el servidor si no existe
 const createSharedFolder = () => {
     db.query('SELECT * FROM folders WHERE name = "Notas compartidas"', (err, results) => {
         if (err) throw err;
@@ -54,8 +55,6 @@ const createSharedFolder = () => {
         }
     });
 };
-
-// Inicializar la carpeta compartida
 createSharedFolder();
 
 // Rutas para la página de inicio
@@ -133,11 +132,11 @@ app.use((err, req, res, next) => {
     res.status(500).send('Algo salió mal');
 });
 
-// Usar el router
+// Usar routers para manejar diferentes rutas de la aplicación
 app.use('/', router);
 app.use('/notes', notesRouter);
 app.use('/folders', foldersRouter);
-app.use('/notifications', notificationsRouter); // Usar el router de notificaciones
+app.use('/notifications', notificationsRouter);
 
 // Puerto en el que escucha el servidor
 const port = 3001;

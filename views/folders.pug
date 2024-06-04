@@ -1,15 +1,10 @@
 extends layout
 
 block content
-  .container
-    h1= title
-    if messages.error
-      p.error= messages.error
-    if messages.success
-      p.success= messages.success
-    a(href='/folders/new') Nueva Carpeta
-    a(href='/notes') Volver a Notas
-    ul
+  .folders-container
+    h1 Carpetas
+    ul.folders-list
       each folder in folders
-        li
+        li.folder-item
           a(href=`/folders/${folder.id}`)= folder.name
+    a.btn.btn-primary(href='/folders/new') Nueva Carpeta

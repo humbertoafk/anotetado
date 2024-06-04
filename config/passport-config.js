@@ -1,26 +1,25 @@
-// config/passport-config.js
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const db = require('./database');
 
 function initialize(passport) {
-    const authenticateUser = async (email, password, done) => {
-        db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
-            if (err) throw err;
-            if (results.length > 0) {
-                const user = results[0];
-                try {
-                    if (await bcrypt.compare(password, user.password)) {
-                        return done(null, user);
-                    } else {
-                        return done(null, false, { message: 'Contraseña incorrecta.' });
-                    }
-                } catch (e) {
-                    return done(e);
-                }
-            } else {
-                return done(null, false, { message: 'Usuario no existente, intentelo de nuevo.' });
+    const authenticateUser = (email, password, done) => {
+        db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+            if (err) return done(err);
+            if (results.length === 0) {
+                return done(null, false, { message: 'Ningún usuario con ese email' });
             }
+
+            const user = results[0];
+
+            bcrypt.compare(password, user.password, (err, isMatch) => {
+                if (err) throw err;
+                if (isMatch) {
+                    return done(null, user);
+                } else {
+                    return done(null, false, { message: 'Contraseña incorrecta' });
+                }
+            });
         });
     };
 
@@ -28,7 +27,7 @@ function initialize(passport) {
     passport.serializeUser((user, done) => done(null, user.id));
     passport.deserializeUser((id, done) => {
         db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
-            if (err) throw err;
+            if (err) return done(err);
             return done(null, results[0]);
         });
     });

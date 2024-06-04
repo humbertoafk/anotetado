@@ -1,97 +1,159 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+  font-family: "Roboto", sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
-header {
-  background: #333;
-  color: #fff;
-  padding: 10px 0;
-  text-align: center;
+nav {
+  background-color: #343a40;
+  padding: 10px;
 }
-header nav ul {
+nav ul.nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+nav ul.nav-list li.nav-item {
+  margin: 0 10px;
+}
+nav ul.nav-list li.nav-item a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+nav ul.nav-list li.nav-item a:hover {
+  background-color: #495057;
+  text-decoration: none;
+}
+nav img {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.notes-container, .folder-notes-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.note-card {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.note-card h2 {
+  margin-top: 0;
+}
+.note-card p {
+  margin: 5px 0;
+}
+.note-card .btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 1px 8px;
+}
+.note-card .btn.btn-primary {
+  background-color: #007bff;
+}
+.note-card .btn.btn-primary:hover {
+  background-color: #0056b3;
+}
+.note-card .btn.btn-danger {
+  background-color: #dc3545;
+}
+.note-card .btn.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.folders-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.folders-list {
   list-style: none;
   padding: 0;
 }
-header nav ul li {
-  display: inline;
-  margin: 0 10px;
+.folders-list li.folder-item {
+  margin: 10px 0;
 }
-header nav ul li a {
-  color: #fff;
+.folders-list li.folder-item a {
+  display: block;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-decoration: none;
+  color: #007bff;
+}
+.folders-list li.folder-item a:hover {
+  background-color: #f0f0f0;
+}
+
+.edit-note-container, .new-note-container, .new-folder-container, .login-container, .register-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover {
+  background-color: #0056b3;
 }
 
 .container {
-  max-width: 800px;
-  margin: 20px auto;
   padding: 20px;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  text-align: center;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-form div {
-  margin-bottom: 15px;
-}
-form div label {
-  margin-bottom: 5px;
-  display: block;
-}
-form div input[type=text],
-form div textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
   border-radius: 4px;
 }
-form button {
-  padding: 10px;
-  background: #333;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.alert.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
-form button:hover {
-  background: #555;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-ul li {
-  background: #fff;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-ul li h2 {
-  margin: 0;
-  font-size: 1.2em;
-}
-ul li p {
-  margin: 10px 0;
-}
-ul li a {
-  margin-right: 10px;
-  color: #333;
-  text-decoration: none;
-}
-ul li a:hover {
-  text-decoration: underline;
+.alert.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
 
 /*# sourceMappingURL=main.css.map */

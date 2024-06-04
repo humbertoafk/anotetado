@@ -1,18 +1,14 @@
 extends layout
 
 block content
-  .container
-    h1= title
-    if messages.error
-      p.error= messages.error
-    if messages.success
-      p.success= messages.success
-    ul
-      each note in notes
-        li
-          h2= note.title
-          p= note.content
-          p Creado en: #{note.created_at_formatted}
-          p #{note.username} compartió esta nota
-          a(href=`/notes/edit/${note.id}`) Editar
-          a(href=`/notes/delete/${note.id}`) Eliminar
+  .notes-container
+    h1 Notas
+    each note in notes
+      .note-card
+        h2= note.title
+        p Fecha de creación: #{note.created_at_formatted}
+        p= note.content
+        if note.shared_by
+          p Compartido por: #{note.shared_by}
+        a.btn.btn-primary(href=`/notes/edit/${note.id}`) Editar
+        a.btn.btn-danger(href=`/notes/delete/${note.id}`) Eliminar

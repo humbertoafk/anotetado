@@ -1,22 +1,18 @@
 extends layout
 
 block content
-  .container
-    h1= title
-    if messages.error
-      p.error= messages.error
-    if messages.success
-      p.success= messages.success
+  .edit-note-container
+    h1 Editar Nota
     form(action=`/notes/edit/${note.id}` method='POST')
-      div
+      .form-group
         label(for='title') Título:
-        input(type='text' name='title' value=note.title required)
-      div
+        input(type='text' name='title' value=note.title required class='form-control')
+      .form-group
         label(for='content') Contenido:
-        textarea(name='content' required)= note.content
-      div
+        textarea(name='content' required class='form-control')= note.content
+      .form-group
         label(for='folder_id') Carpeta:
-        select(name='folder_id')
+        select(name='folder_id' class='form-control')
           each folder in folders
             option(value=folder.id selected=folder.id == note.folder_id)= folder.name
-      button(type='submit') Actualizar Nota
+      button(type='submit' class='btn btn-primary') Actualizar Nota
