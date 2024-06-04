@@ -117,7 +117,7 @@ router.get('/search', ensureAuthenticated, (req, res) => {
         results.forEach(note => {
             note.created_at_formatted = moment(note.created_at).tz('America/Mexico_City').format('YYYY-MM-DD HH:mm:ss');
         });
-        res.render('notes', { title: 'Notas', notes: results });
+        res.render('notes', { title: 'Buscar Notas', notes: results });
     });
 });
 

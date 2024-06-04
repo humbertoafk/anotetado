@@ -3,6 +3,9 @@ extends layout
 block content
   .notes-container
     h1 Notas
+    form.search-form(action="/notes/search" method="GET")
+      input(type="text" name="query" placeholder="Buscar en notas..." class="search-input")
+      button(type="submit" class="search-button") Buscar
     a.btn.btn-crearnota(href="/notes/new") Crear Nota
     each note in notes
       .note-card
